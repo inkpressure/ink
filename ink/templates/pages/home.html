@@ -13,10 +13,10 @@
 <style>
 .triage-box {
   padding: 5px;
-  max-width: 350px;
+  max-width: 500px;
 }
 #color-triage {
-  width:500px;
+  width:550px;
   padding: 5px;
   font-family: "Coming Soon", sans-serif;
   background-color: transparent;
@@ -98,9 +98,10 @@ p {
   </div>
 </div>
 
-<div class="col-12">
+<div class="col-sm-12">
    <div id="color-picker-container"></div>
 </div>
+<div class="row">
 <div class="col-12">
   <div id="color-triage">
       <h1 style="text-align: center">My Palette</h1>
@@ -110,18 +111,14 @@ p {
 <div class="col-12">
   <h5>My Order</h5>
     <table id="ptable">
-          <tr><td>Color Name</td><td>HEX</td><td>Matte </td><td>Glossy </td><td>Pearl</td></tr>
+          <tr><td>COLOR </td>  <td> HEX </td>  <td> Matte </td>  <td> Glossy </td>  <td> Pearl</td></tr>
     </table>
-
-
 </div>
+</div>
+<button class="btn-outline-success btn-lg" onclick="createpalette()">ORDER</button>
 
-
-
-<button class="btn-success btn-lg" onclick="createpalette()">ORDER MY PAINT</button>
 <script>
   var picker = new iro.ColorPicker("#color-picker-container", {
-  borderWidth: 2,
     width: 180,
   layout: [
     {
@@ -130,6 +127,7 @@ p {
           borderColor: '#000234',
           height: 400,
           handleRadius: 10,
+          borderWidth: 3,
 
         }
     },
@@ -139,6 +137,8 @@ p {
         borderColor: "#000234",
         handleRadius: 15,
         sliderHeight: 15,
+        borderWidth: 2,
+
       }
     }
   ]
@@ -175,7 +175,7 @@ function createpalette(){
 
     var m = document.getElementById('matte-'+c);
     var mm = 'n';
-    if (m.checked) mm='y';
+    if (m.checked) mm='y'
 
     var g = document.getElementById('glossy-'+c);
     var gg = 'n';
@@ -185,23 +185,22 @@ function createpalette(){
     var rr = 'n';
     if (r.checked) rr='y';
 
-
-    p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><td>'+rr+'</td></tr>'
+p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><td>'+rr+'</td></tr>'
   }
 }
 
 function triage(color) {
-  document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="background-color:'+color.hexString+'">' +
+  document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:5px; background-color:'+color.hexString+'">' +
 
-    '<input class="login" id="label-'+color.hexString+'" type="text" size="9" value="name">' +
+    '<input class="login" id="label-'+color.hexString+'" type="text" size="20" value="name">' +
 
-    'Matte<input id="matte-'+color.hexString+'" type="checkbox">' +
-    'Glossy <input id="glossy-'+color.hexString+'" type="checkbox">' +
+    'One Stage <input id="matte-'+color.hexString+'" type="checkbox" checked>' +
+    'Clear Coat<input id="glossy-'+color.hexString+'" type="checkbox">' +
     'Pearl <input id="pearl-'+color.hexString+'" type="checkbox">'
 
     +'<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">' +
 
-    '<div <button style="max-width: 40px; box-radius: 10px" class="btn-danger">close<button<div></a>' + '</div>';
+    '<div <button style="max-width: 35px; border-radius: 15px" class="btn-danger">X<button<div></a>' + '</div>';
 }
 picker.on("input:end", triage)
 
