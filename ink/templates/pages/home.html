@@ -14,15 +14,17 @@
 .triage-box {
   padding: 5px;
   max-width: 500px;
+
 }
 #color-triage {
   width:550px;
-  padding: 5px;
+  height: inherit;
+  padding: 3px;
+  border-color: #000234;
   font-family: "Coming Soon", sans-serif;
   background-color: transparent;
 }
 #color-picker-container{
-  align-content: center;
 }
 .awesome {
       font-family: "Whoa!", sans-serif;
@@ -78,14 +80,11 @@
 p {
   font-family: "Coming Soon", sans-serif;
 }
-</style>
 
-<div class="row">
+</style>
   <div class="col-12">
     <h2 class="awesome">Custom Spray Paint</h2>
   </div>
-</div>
-<div class="row">
   <div class="col">
          <p>1) Pick your colors and create a palette of paints.</p>
      <div class="col">
@@ -93,29 +92,21 @@ p {
       <div class="col">
           <p>3) Order Your Custom Spray Paint!</p>
         <p class="awesome">Spray Away!</p>
-      </div>
-    </div>
   </div>
-</div>
 
-<div class="col-sm-12">
    <div id="color-picker-container"></div>
-</div>
-<div class="row">
-<div class="col-12">
-  <div id="color-triage">
-      <h1 style="text-align: center">My Palette</h1>
+
+  <div id="color-triage" style="align-content: flex-start">
+      <h1 style="text-align: center">My Colors</h1>
         <div id="palette"></div>
-  </div>
 </div>
-<div class="col-12">
-  <h5>My Order</h5>
+  <h5>Order</h5>
     <table id="ptable">
           <tr><td>COLOR </td>  <td> HEX </td>  <td> Matte </td>  <td> Glossy </td>  <td> Pearl</td></tr>
     </table>
 </div>
-</div>
-<button class="btn-outline-success btn-lg" onclick="createpalette()">ORDER</button>
+  <button class="btn-outline-success btn-lg" onclick="createpalette()">Order Paint</button>
+
 
 <script>
   var picker = new iro.ColorPicker("#color-picker-container", {
@@ -175,7 +166,7 @@ function createpalette(){
 
     var m = document.getElementById('matte-'+c);
     var mm = 'n';
-    if (m.checked) mm='y'
+    if (m.checked) mm='y';
 
     var g = document.getElementById('glossy-'+c);
     var gg = 'n';
@@ -190,13 +181,13 @@ p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><t
 }
 
 function triage(color) {
-  document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:5px; background-color:'+color.hexString+'">' +
+  document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">' +
 
     '<input class="login" id="label-'+color.hexString+'" type="text" size="20" value="name">' +
 
-    'One Stage <input id="matte-'+color.hexString+'" type="checkbox" checked>' +
-    'Clear Coat<input id="glossy-'+color.hexString+'" type="checkbox">' +
-    'Pearl <input id="pearl-'+color.hexString+'" type="checkbox">'
+    'One Stage <input id="matte-'+color.hexString+'" type="radio">' +
+    'Clear Coat<input id="glossy-'+color.hexString+'" type="radio">' +
+    'Pearl <input id="pearl-'+color.hexString+'" type="radio">'
 
     +'<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">' +
 
