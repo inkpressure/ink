@@ -16,15 +16,11 @@
   max-width: 500px;
 
 }
-#color-triage {
+#color-triage .swatch {
   width:550px;
-  height: inherit;
+  height: 100px;
   padding: 3px;
-  border-color: #000234;
-  font-family: "Coming Soon", sans-serif;
-  background-color: transparent;
-}
-#color-picker-container{
+  font-family: "Permanent Marker", sans-serif;
 }
 .awesome {
       font-family: "Whoa!", sans-serif;
@@ -105,12 +101,24 @@ p {
           <tr><td>COLOR </td>  <td> HEX </td>  <td> Matte </td>  <td> Glossy </td>  <td> Pearl</td></tr>
     </table>
 </div>
+
   <button class="btn-outline-success btn-lg" onclick="createpalette()">Order Paint</button>
 
-
 <script>
+
   var picker = new iro.ColorPicker("#color-picker-container", {
+    handleSvg: '#handle',
     width: 180,
+    css: {
+    'body': {
+      'border-color': '$color'
+    },
+    // CSS variables are supported too
+    // https://github.com/jaames/iro-dynamic-css#css-variables
+    ':root': {
+      '--selected-color': '$color'
+    }
+  },
   layout: [
     {
       component: iro.ui.Wheel,
@@ -181,19 +189,24 @@ p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><t
 }
 
 function triage(color) {
-  document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">' +
+  document.getElementById('color-triage').innerHTML += '<div class="triage-box swatch" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">' +
 
-    '<input class="login" id="label-'+color.hexString+'" type="text" size="20" value="name">' +
+    '<input class="login" id="label-'+color.hexString+'" type="text" size="20" value="name">'
 
-    'One Stage <input id="matte-'+color.hexString+'" type="radio">' +
-    'Clear Coat<input id="glossy-'+color.hexString+'" type="radio">' +
-    'Pearl <input id="pearl-'+color.hexString+'" type="radio">'
+    +'One Stage <input id="matte-'+color.hexString+'" type="radio">'
+    +'Clear Coat<input id="glossy-'+color.hexString+'" type="radio">'
+    +'Pearl <input id="pearl-'+color.hexString+'" type="radio">'
 
-    +'<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">' +
+    +'<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">'
+    + '<div class="btn-danger" ' +
+    'style="color: #000234 margin: 3px; width: 65px; height:25px; border-radius: 5px" >Remove<div></a>'
 
-    '<div <button style="max-width: 35px; border-radius: 15px" class="btn-danger">X<button<div></a>' + '</div>';
+    +'<a style="color: white" href="#" onclick="addToPalette(\''+color.hexString+'\')">'
+    + '<div class="btn-success" ' +
+    ' margin" 3px;width: 75px; height: 30px; border-radius: 5px" '+color.hexString+'>Add</a>'+'</div>';
 }
 picker.on("input:end", triage)
 
 </script>
+
 {% endblock content %}

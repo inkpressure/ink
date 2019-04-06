@@ -1657,7 +1657,6 @@
 	  color: '#fff',
 	  borderColor: '#fff',
 	  borderWidth: 0,
-	  display: 'block',
 	  wheelLightness: true,
 	  sliderHeight: null,
 	  sliderMargin: 12,
