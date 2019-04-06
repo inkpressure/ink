@@ -173,22 +173,35 @@ function createpalette(){
 
     if (n=='[label]') n = 'Paint';
 
-    var t = document.getElementById('custom-'+c);
+    var m = document.getElementById('matte-'+c);
+    var mm = 'n';
+    if (m.checked) mm='y';
 
-    var tt = 'n';
+    var g = document.getElementById('glossy-'+c);
+    var gg = 'n';
+    if (g.checked) gg='y';
 
-    if (t.checked) tt='y';
-    p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+tt+'</td></tr>'
+    var r = document.getElementById('pearl-'+c);
+    var rr = 'n';
+    if (r.checked) rr='y';
+
+
+    p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><td>'+rr+'</td></tr>'
   }
 }
+
 function triage(color) {
   document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="background-color:'+color.hexString+'">' +
 
     '<input class="login" id="label-'+color.hexString+'" type="text" size="9" value="name">' +
-    'custom <input id="custom-'+color.hexString+'" type="checkbox">' +
-    '<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">' +
-    '<div <button style="max-width: 40px; box-radius: 10px" class="btn-danger">close<button<div></a>' +
-    '</div>';
+
+    'Matte<input id="matte-'+color.hexString+'" type="checkbox">' +
+    'Glossy <input id="glossy-'+color.hexString+'" type="checkbox">' +
+    'Pearl <input id="pearl-'+color.hexString+'" type="checkbox">'
+
+    +'<a style="color: white" href="#" onclick="removefrompalette(\''+color.hexString+'\')">' +
+
+    '<div <button style="max-width: 40px; box-radius: 10px" class="btn-danger">close<button<div></a>' + '</div>';
 }
 picker.on("input:end", triage)
 
