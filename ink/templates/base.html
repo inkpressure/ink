@@ -11,7 +11,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Comfortaa|Coming+Soon|Permanent+Marker">
-    <iframe id="audio" src="{% static 'media/spray_audio.mp3' %}" allow="autoplay"  style="display:none"></iframe>
+    <iframe id="audio" src="{% static 'media/spray_sound.mp3' %}" allow="autoplay"  style="display:none"></iframe>
     <source src="{% static 'media/spray_audio.mp3' %}" type="audio/mpeg">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -28,15 +28,15 @@
   <body>
 
     <div class="mb-1">
-      <nav class="navbar navbar-expand-md navbar-light">
-        <button class="navbar-toggler navbar-toggler-right" type="button"
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler navbar-toggler-left" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler">
             <img style="height:50px" src="{% static 'images/fingerprint_flat.svg' %}" alt=""></span>
         </button>
         <a class="navbar-brand" href="{% url 'home' %}">
-          <img style="width: 150px;" src="{% static 'images/inkpressure_logo.svg' %}" alt="logo"></a>
+          <img style="width: 200px;" src="{% static 'images/inkpressure_logo.svg' %}" alt="logo"></a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -81,7 +81,7 @@
 <style>
 body{
   text-align: center;
-  padding-top: 75px%;
+  padding-top: 0px%;
   animation: shake;
   animation-duration: .6s;
   width: 100%;
@@ -93,10 +93,11 @@ body{
 }
 </style>
 
+<div class="container-fluid">
       {% block content %}
 
       {% endblock content %}
-
+</div>
     </div> <!-- /container -->
 
     {% block modal %}{% endblock modal %}
