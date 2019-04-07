@@ -17,14 +17,8 @@ body{
 
 }
 
-.triage-box #swatch{
-  width:250px;
-  height: 150px;
-  background-color: #000234;
-
-}
 #color-triage{
-  width:350px;
+  width:300px;
   height: 150px;
   padding: 2px;
   font-family: "Permanent Marker", sans-serif;
@@ -397,23 +391,21 @@ colorPicker.on("color:change", function(color){
 </script>
 
 <div class="container-fluid">
-<div class="row">
-    <div class="col-lg-4">
       <div id="color-picker-container"></div>
-  </div>
  </div>
-</div>
 
   <div class="container">
+  <div class="row">
   <h3 style="text-align: center">Colors Swatches</h3>
   <div id="color-triage"></div> <div id="palette"></div>
   </div>
+  </div>
 
-
-
-</div>
+<div class="container">
+  <div class="row">
     <div><button class="btn-outline-success btn-lg" onclick="createpalette()">Order Paint</button></div>
-
+  </div>
+</div>
   <div class="row">
     <div class="col-3">
   <h5>Order</h5>
@@ -538,11 +530,11 @@ p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><t
   }
 }
 
-function triage(color) {document.getElementById('color-triage').innerHTML += '<div class="triage-box swatch" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">'
+function triage(color) {document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">'
 
       +'<div style="container">'
 
-  +'<input class="signup" id="label-'+color.hexString+'" type="text" size="30" value="Name Your Color!">'+'</div>'
+  +'<input class="signup" id="label-'+color.hexString+'" type="text" size="30" placeholder="Name Your Color" value="">'+'</div>'
 
     +'<form action="">'
     +'<input id="matte-'+color.hexString+'" type="radio" name="texture">Single'
