@@ -17,14 +17,10 @@ body{
 
 }
 
-#swatch {
-  height: 20px;
-  width: 120px;
-  border-radius: 3px;
-}
-
-.triage-box {
-  padding: 5px;
+.triage-box #swatch{
+  width:300px;
+  height: 150px;
+  adding: 5px;
   width: 0px;
   background-color: #000234;
 
@@ -39,7 +35,6 @@ body{
 .awesome {
       font-family: "Whoa!", sans-serif;
       -webkit-animation:colorchange 20s infinite alternate;
-
     }
     @-webkit-keyframes colorchange {
       0% {
@@ -72,22 +67,21 @@ body{
         color: #f4f010;
       }
     }
+
 p {
   font-family: "Coming Soon", sans-serif;
 }
-.btn-primary{
-  border-radius: 3px;
-}
-.btn-danger{
-  border-radius: 3px;
-}
+
 </style>
 
-  <div class="container">
+<div class="container">
   <div class="row">
-  <div class="col-12">
-    <h2 class="awesome">Custom Spray Paint</h2>
+    <div class="col-12">
+      <h2 class="awesome">Custom Spray Paint</h2>
   </div>
+</div>
+</div>
+
 <script>
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -103,7 +97,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
-/******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
@@ -116,18 +109,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
 /******/
@@ -140,7 +128,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
-/******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
 /******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
@@ -148,12 +135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
+
 /******/ 	__webpack_require__.t = function(value, mode) {
 /******/ 		if(mode & 1) value = __webpack_require__(value);
 /******/ 		if(mode & 8) return value;
@@ -164,7 +146,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
 /******/ 		return ns;
 /******/ 	};
-/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -173,20 +154,16 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
-/************************************************************************/
 /******/ ({
-
 /***/ "./index.js":
 /*!******************!*\
   !*** ./index.js ***!
@@ -198,8 +175,6 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stylesheet_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stylesheet.js */ "./stylesheet.js");
 /* harmony import */ var _util_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util.js */ "./util.js");
-
-
 
 var DynamicCssPlugin = function DynamicCssPlugin(iro, pluginOptions) {
   var throttleDelay = pluginOptions.throttle || null;
@@ -230,11 +205,8 @@ var DynamicCssPlugin = function DynamicCssPlugin(iro, pluginOptions) {
     version: "1.0.4"
   };
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (DynamicCssPlugin);
-
 /***/ }),
-
 /***/ "./stylesheet.js":
 /*!***********************!*\
   !*** ./stylesheet.js ***!
@@ -259,25 +231,19 @@ function () {
   */
   function Stylesheet() {
     _classCallCheck(this, Stylesheet);
-
     // Create a new style element
     var style = document.createElement('style');
     document.head.appendChild(style); // Webkit apparently requires a text node to be inserted into the style element
     // (according to https://davidwalsh.name/add-rules-stylesheets)
-
     style.appendChild(document.createTextNode(''));
     this.style = style; // Create a reference to the style element's CSSStyleSheet object
     // CSSStyleSheet API: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet
-
     this.sheet = style.sheet; // We'll store references to all the CSSStyleDeclaration objects that we change here, keyed by the CSS selector they belong to
     // CSSStyleDeclaration API: https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration
-
     this.map = {};
   }
-
   _createClass(Stylesheet, [{
     key: "setRule",
-
     /**
       * @desc Set a specific rule for a given selector
       * @param {String} selector - the CSS selector for this rule (e.g. "body", ".class", "#id")
@@ -316,7 +282,6 @@ function () {
       * @desc Get the stylesheet text
       * @return {String} css text
     */
-
   }, {
     key: "rules",
     get: function get() {
@@ -346,7 +311,6 @@ function () {
       * @desc Get an object representing the current css styles
       * @return {Object} css object
     */
-
   }, {
     key: "css",
     get: function get() {
@@ -359,19 +323,13 @@ function () {
           var property = ruleSet[i];
           result[selector][property] = ruleSet.getPropertyValue(property);
         }
-
         return result;
       }, {});
     }
   }]);
-
   return Stylesheet;
 }();
-
-
-
 /***/ }),
-
 /***/ "./util.js":
 /*!*****************!*\
   !*** ./util.js ***!
@@ -394,7 +352,6 @@ var throttle = function throttle(callback, delay) {
     if (!timer) timer = setTimeout(fn, delay);
   };
 };
-
 /***/ }),
 
 /***/ 0:
@@ -405,19 +362,13 @@ var throttle = function throttle(callback, delay) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! ./index.js */"./index.js");
-
-
 /***/ })
-
 /******/ })["default"];
 });
 //# sourceMappingURL=iro-dynamic-css.js.map
 </script>
-
-  <script>
+<script>
 iro.use(iroDynamicCss);
-
-
 var colorPicker = new iro.ColorPicker(".colorPicker", {
 
   width: 280,
@@ -431,8 +382,6 @@ var values = document.getElementById("values");
 var css = document.getElementById("css");
 
 colorPicker.on("color:change", function(color){
-  // Show the current color in different formats
-  // Using the selected color: https://iro.js.org/guide.html#Using-the-Selected-Color
   values.innerHTML = [
     "hex: " + color.hexString,
     "rgb: " + color.rgbString,
@@ -447,42 +396,36 @@ colorPicker.on("color:change", function(color){
     }
   });
 });
-  </script>
+</script>
 
-
-
-
-</div>
-</div>
 <div class="container-fluid">
-   <div id="color-picker-container"></div>
+<div class="row">
+    <div class="col-lg-4">
+      <div id="color-picker-container"></div>
+  </div>
+ </div>
+</div>
+
+  <div class="container">
+  <h3 style="text-align: center">Colors Swatches</h3>
+  <div id="color-triage"></div> <div id="palette"></div>
   </div>
 
-<div id="swatch"></div>
 
-  <div class="container-fluid">
-  <h3 style="text-align: center">My Colors</h3>
-  <div id="color-triage"></div>
-  </div>
-
-  <div class="row">
-  <div id="palette"></div>
 
 </div>
     <div><button class="btn-outline-success btn-lg" onclick="createpalette()">Order Paint</button></div>
 
   <div class="row">
-    <div class="col-12">
-
+    <div class="col-3">
   <h5>Order</h5>
 <table id="ptable">
 <tr><td>COLOR </td> <td> HEX </td> <td> Matte </td> <td> Glossy </td> <td> Pearl</td></tr></table>
+  </div>
+  </div>
 
-  </div>
-  </div>
 <script>
 iro.use(iroDynamicCss);
-
 colorPicker.on("color:change", function(color){
   // Show the current color in different formats
   // Using the selected color: https://iro.js.org/guide.html#Using-the-Selected-Color
@@ -516,9 +459,9 @@ var css = document.getElementById("css");
         options: {
           borderColor: '#000234',
           height: 400,
-          handleRadius: 10,
+          handleRadius: 15,
           borderWidth: 3,
-          padding: 5,
+          padding: 2,
         }
     },
     {
@@ -528,7 +471,7 @@ var css = document.getElementById("css");
         handleRadius: 15,
         sliderHeight: 15,
         borderWidth: 2,
-        margin: 5,
+        padding: 2,
 
       }
     }
@@ -604,18 +547,17 @@ function triage(color) {document.getElementById('color-triage').innerHTML += '<d
   +'<input class="signup" id="label-'+color.hexString+'" type="text" size="30" value="Name Your Color!">'+'</div>'
 
     +'<form action="">'
-    +'<input id="matte-'+color.hexString+'" type="radio" name="paint">Single'
-    +'<input id="glossy-'+color.hexString+'" type="radio" name="paint">Glossy'
-    +'<input id="pearl-'+color.hexString+'" type="radio" name="paint">Pearl'
+    +'<input id="matte-'+color.hexString+'" type="radio" name="texture">Single'
+    +'<input id="glossy-'+color.hexString+'" type="radio" name="texture">Glossy'
+    +'<input id="pearl-'+color.hexString+'" type="radio" name="texture">Pearl'
     +'</form>'
     +'<div id="swatch">'
     +'<div class="btn-danger" href="#" onclick="removefrompalette(\''+color.hexString+'\')">Remove</div>'+ '</div>'
     +'<div>'+ '</div>'
-   +'<div class="btn-primary" href="#" (\''+color.hexString+'\')">Add to Palette</div>'+ '</div>'+'</div>';
+   +'<div class="btn-primary" href="#" (\''+color.hexString+'\')">Add to Cart</div>'+ '</div>'+'</div>';
 }
 picker.on("input:end", triage);
 
 </script>
-
 
 {% endblock content %}
