@@ -28,7 +28,7 @@ TIME_ZONE = "UTC"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
-SITE_ID = 1
+SITE_ID = 2
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
 USE_I18N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-l10n
@@ -69,11 +69,15 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    'allauth.socialaccount.providers.google',
     "rest_framework",
+    "colorful",
+    "localflavor",
+    "colorfield",
+
 ]
 LOCAL_APPS = [
     "ink.users.apps.UsersAppConfig",
-    # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -186,9 +190,6 @@ TEMPLATES = [
 ]
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-
-# FIXTURES
-# ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#fixture-dirs
 FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
 
@@ -221,11 +222,13 @@ MANAGERS = ADMINS
 
 
 # django-allauth
-# ------------------------------------------------------------------------------
+
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_USERNAME_REQUIRED = True
+
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "optional"
@@ -233,7 +236,4 @@ ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_ADAPTER = "ink.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "ink.users.adapters.SocialAccountAdapter"
-
-
-# Your stuff...
-# ------------------------------------------------------------------------------
+GRAPPELLI_CLEAN_INPUT_TYPES = False

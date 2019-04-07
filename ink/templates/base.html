@@ -17,9 +17,10 @@
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
     {% block css %}
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
@@ -27,10 +28,15 @@
     {% endblock css %}
 
 </head>
-
+{% block favicon %}
+        <link rel="icon/ico" href="{% static 'images/favicons/favicon.ico' %}">
+  {% endblock favicon%}
 <body>
-    <div class="mb-1">
-      <nav class="navbar navbar-expand-lg navbar-light">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=275166813408739&autoLogAppEvents=1"></script>
+
+<div class="mb-1">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <button class="navbar-toggler navbar-toggler-left" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,34 +52,35 @@
               <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
 
-            {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+              {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'shopping' %}">Shopping Cart</a>
               </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="{% url 'shopping' %}">Shopping Cart</a>
-            </li>
-            {% endif %}
+              {% endif %}
           </ul>
         </div>
-      </nav>
-
-    </div>
-
+    </nav>
+</div>
+{% if user.is_authenticated %}
+<h6 style="float: right; color: #00c300;">Welcome Back {{ user.username }} !!!</h6>
+{% endif %}
     <div class="container">
 
       {% if messages %}
@@ -104,8 +111,39 @@ body{
       {% block content %}
 
       {% endblock content %}
+ <style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000234;
+  color: white;
+  text-align: center;
+}
+</style>
+<footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          <a href="https://www.facebook.com/Inkpressurecom-1982157881897017/?modal=admin_todo_tour">
+            <img style="width: 35px; margin: 18px"
+                 src="{% static 'images/socials/facebook_icon.png' %}" alt="fb logo"></a>
+          <a href="https://www.instagram.com/inkpressure/">
+           <img style="width: 35px; margin: 18px"
+               src="{% static 'images/socials/instagram_icon.png' %}" alt="insta logo"></a>
+          <a href="https://twitter.com/Inkpressure2">
+            <img style="width: 35px; margin: 18px"
+               src="{% static 'images/socials/twitter_icon.png' %}" alt="twitter logo"></a>
+          <a href=""><img style="width: 35px; margin: 18px"
+                          src="{% static 'images/socials/youtube_icon.png' %}" alt="youtube logo"></a>
+        </span>
+      </div>
+    </footer>
 
-    {% block modal %}{% endblock modal %}
+    {% block modal %}
+
+
+    {% endblock modal %}
 
     {% block javascript %}
       
@@ -115,10 +153,10 @@ body{
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
       <!-- Your stuff: Third-party javascript libraries go here -->
-      
+   <script src="https://cdn.jsdelivr.net/npm/iro-dynamic-css/dist/iro-dynamic-css.min.js"></script>
 
       <!-- place project specific Javascript in this file -->
-      <script src="https://cdn.jsdelivr.net/npm/iro-dynamic-css/dist/iro-dynamic-css.min.js"></script>
+
       <script src="{% static 'js/project.js' %}"></script>
       
 

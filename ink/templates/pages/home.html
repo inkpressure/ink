@@ -12,45 +12,16 @@
 {% endblock extra_js %}
 
 <style>
-.wrapper svg {
-}
+body{
+    background-color: var(--selected-color);
 
-.wrap {
-  min-height: 100vh;
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  .half {
-    width: 50%;
-    padding: 32px 0;
-  }
-}
-
-.title {
-  font-family: sans-serif;
-  line-height: 24px;
-  display: block;
-  padding: 8px 0;
-}
-
-.readout {
-  margin-top: 32px;
-  font-family: monospace;
 }
 
 #swatch {
   height: 20px;
   width: 120px;
-  background-color: var(--selected-color);
   border-radius: 3px;
 }
-
-.link {
-  margin-top: 16px;
 
 .triage-box {
   padding: 5px;
@@ -58,7 +29,7 @@
   background-color: #000234;
 
 }
-#color-triage #swatch {
+#color-triage{
   width:350px;
   height: 150px;
   padding: 2px;
@@ -442,9 +413,6 @@ module.exports = __webpack_require__(/*! ./index.js */"./index.js");
 });
 //# sourceMappingURL=iro-dynamic-css.js.map
 </script>
-        <div class="colorPicker"></div>
-        <span class="title">Swatch:</span>
-        <div id="swatch"></div>
 
   <script>
 iro.use(iroDynamicCss);
@@ -456,11 +424,7 @@ var colorPicker = new iro.ColorPicker(".colorPicker", {
   color: "rgb(255, 0, 0)",
   borderWidth: 1,
   borderColor: "#fff",
-  css: {
-    ':root': {
-      '--selected-color': '$color'
-    }
-  },
+
 });
 iro.use(iroDynamicCss);
 var values = document.getElementById("values");
@@ -543,10 +507,9 @@ var css = document.getElementById("css");
     width: 200,
     wheelLightness: true,
     css: {
-    'color': {
-      'color': '$color'
-    },
-
+    ':root': {
+      '--selected-color': '$color'
+    }
   },
       layout:[{
       component: iro.ui.Wheel,

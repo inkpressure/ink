@@ -3630,7 +3630,7 @@ tbody.collapse.show {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 0px solid #000234;
     border-radius: 0.25rem;
 }
 
@@ -3673,8 +3673,8 @@ tbody.collapse.show {
 .card-header {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: rgba(0, 0, 0, 0.0);
+    border-bottom: 3px solid #000234;
 }
 
 .card-header:first-child {
@@ -3683,7 +3683,7 @@ tbody.collapse.show {
 
 .card-footer {
     padding: 0.75rem 1.25rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(0, 0, 0, 0.0);
     border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
