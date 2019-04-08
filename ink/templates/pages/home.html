@@ -12,13 +12,20 @@
 {% endblock extra_js %}
 
 <style>
+
 body{
-    background-color: var(--selected-color);
+  background-color: var(--selected-color);
 
 }
-
+#swatch{
+  height: 50px;
+  width: 50px;
+  background-color: var(--selected-color);
+  border: 2px solid #000234;
+  border-radius: 5px;
+}
 #color-triage{
-  width:300px;
+  width:200px;
   height: 150px;
   padding: 2px;
   font-family: "Permanent Marker", sans-serif;
@@ -389,30 +396,21 @@ colorPicker.on("color:change", function(color){
   });
 });
 </script>
-
+<div id="swatch"></div>
 <div class="container-fluid">
       <div id="color-picker-container"></div>
+  <h5>Current Color</h5>
+
  </div>
 
   <div class="container">
   <div class="row">
-  <h3 style="text-align: center">Colors Swatches</h3>
+  <h3 style="text-align: center">Palette</h3>
   <div id="color-triage"></div> <div id="palette"></div>
   </div>
   </div>
 
-<div class="container">
-  <div class="row">
-    <div><button class="btn-outline-success btn-lg" onclick="createpalette()">Order Paint</button></div>
-  </div>
-</div>
-  <div class="row">
-    <div class="col-3">
-  <h5>Order</h5>
-<table id="ptable">
-<tr><td>COLOR </td> <td> HEX </td> <td> Matte </td> <td> Glossy </td> <td> Pearl</td></tr></table>
-  </div>
-  </div>
+
 
 <script>
 iro.use(iroDynamicCss);
@@ -437,7 +435,7 @@ colorPicker.on("color:change", function(color){
 var values = document.getElementById("values");
 var css = document.getElementById("css");
   var picker = new iro.ColorPicker("#color-picker-container", {
-    width: 200,
+    width: 150,
     wheelLightness: true,
     css: {
     ':root': {
@@ -530,19 +528,16 @@ p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><t
   }
 }
 
-function triage(color) {document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">'
+function triage(color) {document.getElementById('color-triage').innerHTML += '<div class="swatch" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">'
 
       +'<div style="container">'
 
-  +'<input class="signup" id="label-'+color.hexString+'" type="text" size="30" placeholder="Name Your Color" value="">'+'</div>'
+  +'<input class="signup" id="label-'+color.hexString+'" type="text" size="20" placeholder="Name Your Color" value="">'+'</div>'
 
     +'<form action="">'
-    +'<input id="matte-'+color.hexString+'" type="radio" name="texture">Single'
-    +'<input id="glossy-'+color.hexString+'" type="radio" name="texture">Glossy'
-    +'<input id="pearl-'+color.hexString+'" type="radio" name="texture">Pearl'
     +'</form>'
     +'<div id="swatch">'
-    +'<div class="btn-danger" href="#" onclick="removefrompalette(\''+color.hexString+'\')">Remove</div>'+ '</div>'
+    +'<div class="btn-sm" href="#" onclick="removefrompalette(\''+color.hexString+'\')">Remove</div>'+ '</div>'
     +'<div>'+ '</div>'
    +'<div class="btn-primary" href="#" (\''+color.hexString+'\')">Add to Cart</div>'+ '</div>'+'</div>';
 }

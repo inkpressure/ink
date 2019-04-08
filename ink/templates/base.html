@@ -26,18 +26,23 @@
     <link href="{% static 'css/project.css' %}" rel="stylesheet">
         <link href="{% static 'css/ink_bootstrap.css' %}" rel="stylesheet">
     {% endblock css %}
-
+        <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 </head>
-{% block favicon %}
-        <link rel="icon/ico" href="{% static 'images/favicons/favicon.ico' %}">
-  {% endblock favicon%}
+
 <body>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=275166813408739&autoLogAppEvents=1"></script>
-
+<style>
+  .navbar{
+    background-image: url("{% static 'images/footer_boston.svg' %}");
+  background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+}
+</style>
 <div class="mb-1">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <button class="navbar-toggler navbar-toggler-left" type="button"
+        <button class="navbar-toggler" type="button"
                 data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler">
@@ -113,26 +118,26 @@ body{
       {% endblock content %}
  <style>
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  height: 65px;
   width: 100%;
-  background-color: #000234;
-  color: white;
-  text-align: center;
+  background-image: url("{% static '' %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 </style>
 <footer class="footer">
-      <div class="container">
+      <div class="container-fluid">
+        <p style="color: white;">Contact us on Social Media!</p>
         <span class="text-muted">
           <a href="https://www.facebook.com/Inkpressurecom-1982157881897017/?modal=admin_todo_tour">
-            <img style="width: 35px; margin: 18px"
+            <img style="width: 35px; margin: 14px"
                  src="{% static 'images/socials/facebook_icon.png' %}" alt="fb logo"></a>
           <a href="https://www.instagram.com/inkpressure/">
-           <img style="width: 35px; margin: 18px"
+           <img style="width: 35px; margin: 14px"
                src="{% static 'images/socials/instagram_icon.png' %}" alt="insta logo"></a>
           <a href="https://twitter.com/Inkpressure2">
-            <img style="width: 35px; margin: 18px"
+            <img style="width: 35px; margin: 14px"
                src="{% static 'images/socials/twitter_icon.png' %}" alt="twitter logo"></a>
           <a href="https://www.youtube.com/channel/UCBN3SCNve1eBN47lU88Cd1Q?disable_polymer=true"><img style="width: 35px; margin: 18px"
                           src="{% static 'images/socials/youtube_icon.png' %}" alt="youtube logo"></a>
