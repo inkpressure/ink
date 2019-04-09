@@ -74,11 +74,6 @@ a.cart { background-color:blue;}
 iro.use(iroDynamicCss);
 var colorPicker = new iro.ColorPicker(".colorPicker", {
 
-  width: 280,
-  color: "rgb(255, 0, 0)",
-  borderWidth: 1,
-  borderColor: "#fff",
-
 });
 iro.use(iroDynamicCss);
 var values = document.getElementById("values");
@@ -100,12 +95,12 @@ colorPicker.on("color:change", function(color){
   });
 });
 </script>
-<div id="swatch"></div>
 <div class="container-fluid">
 
   <div class="container">
   <div class="row">
     <div class="main-widget" id="color-picker-container"></div>
+    <div id="swatch" style="width: 90px; height: 120px; margin: 5%">Current Color</div>
     <div class="main-widget" id="color-triage"></div>
     <div class="main-widget" id="color-cart"></div>
   </div>
