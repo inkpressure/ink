@@ -50,7 +50,8 @@ class ink {
         this.phase = 0;
         this.teardown();
         var triage = document.getElementById('color-triage');
-        triage.innerHTML += '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
+        triage.innerHTML +=
+                '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
                 + '<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
                 +'<div class="paintname"><input id="matte-'+this.id+'" selected type="radio" name="texture" onchange="ink.INKS['+this.id+'].type = this.value;" value="Single" /> Single'
                 +'<input id="glossy-'+this.id+'" type="radio" name="texture" onchange="ink.INKS['+this.id+'].type = this.value;" value="Glossy" /> Glossy'
