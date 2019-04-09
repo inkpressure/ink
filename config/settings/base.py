@@ -41,7 +41,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default='postgres://admin_nick:admin_nick_pass@127.0.0.1:5432/ink_Db'),
+    "default": env.db("DATABASE_URL", default='postgres://127.0.0.1/ink'),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
