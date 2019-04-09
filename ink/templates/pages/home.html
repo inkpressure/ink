@@ -41,55 +41,32 @@ a.cart { background-color:blue;}
   font-family: "Permanent Marker", sans-serif;
   align-content: center;
 }
-.awesome {
-      font-family: "Whoa!", sans-serif;
-      -webkit-animation:colorchange 20s infinite alternate;
-    }
-    @-webkit-keyframes colorchange {
-      0% {
-        color: #000234;
-      }
-      10% {
-        color: #8e44ad;
-      }
-      20% {
-        color: #a2b3bc;
-      }
-      30% {
-        color: #f01c00;
-      }
-      40% {
-        color: #3aa4ff;
-      }
-      50% {
+.painttriage{
+  position:relative;
+}
+.highz {
+  position:relative;
+  z-index: 28;
+}
 
-        color: #e300a0;
-      }
-      60% {
-
-        color: blue;
-      }
-      70% {
-        color: #ffffff;
-      }
-      80% {
-        color: #f4f010;
-      }
-    }
-
-p {
-  font-family: "Coming Soon", sans-serif;
+.triagetype {
+  position:absolute;
+  top:0;bottom:0;left:0;right:0;
+  opacity: 0.5;
+  z-index:8;
+  border:2px solid blue;
+  background-image:url('/static/images/Single.png');
 }
 
 </style>
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <div class="col-12">
       <h2 class="awesome">Custom Spray Paint</h2>
   </div>
 </div>
-</div>
+</div> -->
 
 <script>
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -492,68 +469,12 @@ colorPicker.on("color:change", function(color){
     }
   });
 });
-function componentToHex(c) {
 
-  var hex = c.toString();
-
-  return hex.length == 1 ? "0" + hex : hex;
-}
-function rgbToHex(r, g, b) {
-
-  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-function removefrompalette(color){
-
-  var x = document.getElementById('triage-'+color);
-  x.parentElement.removeChild(x);
-}
-function createpalette(){
-
-  var p = document.getElementById('ptable');
-
-  var x = document.getElementsByClassName("triage-box");
-
-  for (i = 0; i < x.length; i++) {
-
-    var c = x[i].id.replace('triage-','');
-
-    var n = document.getElementById('label-'+c).value;
-
-    if (n=='[label]') n = 'Paint';
-
-    var m = document.getElementById('matte-'+c);
-    var mm = 'n';
-    if (m.checked) mm='y';
-
-    var g = document.getElementById('glossy-'+c);
-    var gg = 'n';
-    if (g.checked) gg='y';
-
-    var r = document.getElementById('pearl-'+c);
-    var rr = 'n';
-    if (r.checked) rr='y';
-
-p.innerHTML += '<tr><td>'+n+'</td><td>'+c+'</td><td>'+mm+'</td><td>'+gg+'</td><td>'+rr+'</td></tr>'
-  }
-}
 
 function triage(color) {
   var inky = new ink(color);
 }
-function triageold(color) {document.getElementById('color-triage').innerHTML += '<div class="triage-box" id="triage-'+color.hexString+'" style="border-radius:10px; background-color:'+color.hexString+'">'
 
-      +'<div style="container">'
-
-  +'<input class="signup" id="label-'+color.hexString+'" type="text" size="20" placeholder="Name Your Color" value="">'+'</div>'
-
-    +'<form action="">'
-    +'</form>'
-    +'<div id="swatch">'
-    +'<div class="btn-sm" href="#" onclick="removefrompalette(\''+color.hexString+'\')">Remove</div>'+ '</div>'
-    +'<div>'+ '</div>'
-   +'<div class="btn-primary" href="#" (\''+color.hexString+'\')">Add to Cart</div>'+ '</div>'+'</div>';
-}
 picker.on("input:end", triage);
 
 </script>
