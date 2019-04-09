@@ -9,9 +9,17 @@ class ink {
         this.name = this.color.hexString;
         this.phase = 0;
         this.count = 1;
+        this.hide = false;
         if (!ink.INKS) ink.INKS = {};
+        for (var i in ink.INKS) {
+            ink.INKS[i].hide = true;
+            if (ink.INKS[i].phase == 0) {
+                ink.INKS[i].phase = -1;
+                ink.INKS[i].hide = true;
+            }
+        }
         ink.INKS[ink.ID] = this;
-        this.display();
+        this.triage();
     }
     changeCount(c) {
         if (c < 1 && confirm("Are you sure?")) {
@@ -35,16 +43,23 @@ class ink {
             this.cart();
         }
     }
+
     teardown() {
+        for (var y in ink.INKS) {
+                ink.INKS[y].hide = true;
+        }
+        this.hide = false;
         var x = ['ink-0-','ink-1-'];
         for (var y in x) {
-            var z = document.getElementById(x[y] + this.id);
-            if (z) { z.parentNode.removeChild(z); }
+            console.log(''+x[y] + this.id)
+            var z = document.getElementById(''+x[y] + this.id);
+            console.log(''+z);
+            if (z) { z.parentElement.removeChild(z); }
         }
     }
     remove() {
+        ink.INKS[this.id].hide = true;
         this.teardown();
-        delete(ink.INKS[this.id]);
     }
 
     setType(value) {
@@ -53,19 +68,19 @@ class ink {
         us.style.backgroundImage = '/static/images/'+this.type+'.png';
     }
     triage() {
-        this.phase = 0;
         this.teardown();
+        if (this.hide) { return; };
         var triage = document.getElementById('color-triage');
-        triage.innerHTML +=
+        triage.innerHTML =
                 '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
                 +'<div id="inktype-'+this.id+'" class="triagetype"></div>'
-                +'<div class="highz">'
+                +'<div class="highz container">'
                 +'<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
-                +'<div class="paintname">'
-                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
-                +'<input id="glossy-'+this.id+'" type="radio" name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy" /> Glossy'
-                +'<input id="pearl-'+this.id+'" type="radio" name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl" /> Pearl'
-                +'</div>'
+                +'<div class="paintname"><select>'
+                +'<option id="matte-'+this.id+'" selected name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single"> Single</option>'
+                +'<option id="glossy-'+this.id+'" name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy"> Glossy</option>'
+                +'<option id="pearl-'+this.id+'" name="texture" onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl"> Pearl</option>'
+                +'</select></div>'
                 +'<div class="paintacts">'
                 +'<div class="remove"><a class="act remove" onclick="ink.INKS['+this.id+'].remove();">Remove</a></div>'
                 +'<div class="cart"><a class="act cart" onclick="ink.INKS['+this.id+'].cart();">Add to Cart</a></div></div>'
@@ -73,6 +88,7 @@ class ink {
 
     }
     cart() {
+        if (this.hide) { return; };
         if (!this.name) {
             this.name = '#' + this.color.hexString;
         }
