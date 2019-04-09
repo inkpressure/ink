@@ -78,6 +78,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     "ink.users.apps.UsersAppConfig",
+    "shop",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -211,17 +212,12 @@ EMAIL_BACKEND = env(
     "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
 )
 
-# ADMIN
-# ------------------------------------------------------------------------------
-# Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = [("""Nick Kyriakakis""", "nick@inkpressure.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
-
-# django-allauth
 
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -236,4 +232,3 @@ ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_ADAPTER = "ink.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "ink.users.adapters.SocialAccountAdapter"
-GRAPPELLI_CLEAN_INPUT_TYPES = False
