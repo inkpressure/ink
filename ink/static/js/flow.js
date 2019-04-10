@@ -50,7 +50,7 @@ class ink {
     setType(value) {
         this.type = value;
         var us = document.getElementById('inktype-'+this.id);
-        us.style.backgroundImage = '/static/images/'+this.type+'.png';
+        us.style.backgroundImage = '/static/images/'+this.type+'.svg';
     }
     triage() {
         this.phase = 0;

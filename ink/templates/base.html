@@ -1,4 +1,5 @@
 {% load static i18n %}<!DOCTYPE html>
+{% load socialaccount %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -31,11 +32,13 @@
 
 <body>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=275166813408739&autoLogAppEvents=1"></script>
+
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=275166813408739&autoLogAppEvents=1"></script>
 <style>
   .navbar{
     background-image: url("{% static 'images/footer_boston.svg' %}");
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     align-content: center;
 }
@@ -75,6 +78,7 @@
                   {# URL provided by django-allauth/account/urls.py #}
                   <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
                 </li>
+                <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'shopping' %}">Shopping Cart</a>
               </li>
@@ -120,15 +124,11 @@ body{
 .footer {
   left: 0;
   bottom: 0;
-  height: 65px;
   width: 100%;
-  background-image: url("{% static '' %}");
-  background-repeat: no-repeat;
-  background-size: cover;
-
 
 }
 </style>
+   <div class="fb-like" data-href="https://www.inkpressure.com" data-width="60" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
 <footer class="footer">
       <div class="container-fluid">
         <p style="color: white;">Contact us on Social Media!</p>

@@ -33,15 +33,20 @@ a.remove, a.cart {
 input.num {
   width:40px;
 }
-a.remove { background-color:red;}
-a.cart { background-color:blue;}
+a.remove {
+  background-color:red;
+
+}
+a.cart {
+  background-color:blue;}
 
 #color-triage{
-  width:200px;
+  width:400px;
   height: 150px;
   padding: 2px;
   font-family: "Permanent Marker", sans-serif;
   align-content: center;
+background-image: url "{% static 'images/spray_swatch.svg' %}" var(--selected-color);
 }
 .painttriage{
   position:relative;
@@ -56,20 +61,28 @@ a.cart { background-color:blue;}
   top:0;bottom:0;left:0;right:0;
   opacity: 0.5;
   z-index:8;
-  background-image:url('/static/images/Single.png');
+  background-image:url('');
 }
 
 </style>
+<style>
+.test{
 
-<!-- <div class="container">
+    width:100px;
+}
+</style>
+<div class="test"></div>.
+ <div class="container">
   <div class="row">
     <div class="col-12">
       <h2 class="awesome">Custom Spray Paint</h2>
+
   </div>
 </div>
-</div> -->
+</div>
 
-<script src="/static/js/iro-dynamic-css.js"></script>
+<script src="{% static 'js/iro-dynamic-css.min.js' %}"></script>
+
 <script>
 iro.use(iroDynamicCss);
 var colorPicker = new iro.ColorPicker(".colorPicker", {
@@ -100,7 +113,7 @@ colorPicker.on("color:change", function(color){
   <div class="container">
   <div class="row">
     <div class="main-widget" id="color-picker-container"></div>
-    <div id="swatch" style="width: 90px; height: 120px; margin: 5%">Current Color</div>
+    <div id="swatch" style="width: 90px; height: 90px; margin: 15px">Current Color</div>
     <div class="main-widget" id="color-triage"></div>
     <div class="main-widget" id="color-cart"></div>
   </div>
@@ -187,5 +200,8 @@ function triage(color) {
 picker.on("input:end", triage);
 
 </script>
+
+
+
 
 {% endblock content %}
