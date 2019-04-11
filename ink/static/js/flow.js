@@ -60,7 +60,7 @@ class ink {
         this.teardown();
         var triage = document.getElementById('color-triage');
         triage.innerHTML +=
-                '<div class="painttriage container" id="ink-0-'+this.id+'">'
+                '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
                 +'<div id="inktype-'+this.id+'" class="triagetype"></div>'
                 +'<div class="highz">'
 

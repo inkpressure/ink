@@ -13,7 +13,7 @@
 {% endblock extra_js %}
 
 <style>
-#swatch{
+#sprayswatch{
   fill: var(--selected-color);
 
 }
@@ -52,10 +52,10 @@ a.cart {
 }
 .painttriage {
   position:relative;
-  background-image: url("{% static 'images/spray_swatch.svg' %}");
+  fill: var(--selected-color);
   background-repeat:  no-repeat;
   width:500px;
-  fill: var(--selected-color);
+
 
 }
 .highz {
@@ -201,7 +201,7 @@ function triage(color) {
 picker.on("input:end", triage);
 
 </script>
-<div id="sprayswatch"></div>
+<div id="sprayswatch">
 <svg>
     <path
        id="swatch"
@@ -210,7 +210,7 @@ picker.on("input:end", triage);
     </path>
 
 </svg>
-
+</div>
 
 
 {% endblock content %}
