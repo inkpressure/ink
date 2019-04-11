@@ -46,7 +46,10 @@ class ink {
         this.teardown();
         delete(ink.INKS[this.id]);
     }
-
+    cart() {
+        this.teardown();
+        delete(ink.INKS[this.id]);
+    }
     setType(value) {
         this.type = value;
         var us = document.getElementById('inktype-'+this.id);
@@ -57,26 +60,19 @@ class ink {
         this.teardown();
         var triage = document.getElementById('color-triage');
         triage.innerHTML +=
-                '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
+                '<div class="painttriage container" id="ink-0-'+this.id+'">'
                 +'<div id="inktype-'+this.id+'" class="triagetype"></div>'
                 +'<div class="highz">'
-                +'<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" ' +
-            'onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
-                +'<div class="paintname">'
-                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
-                +'<input id="glossy-'+this.id+'" type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy" /> Glossy'
-                +'<input id="pearl-'+this.id+'" type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl" /> Pearl'
-                +'</div>'
+
+
                 +'<div class="paintacts">'
                 +'<div class="remove"><a class="act remove" onclick="ink.INKS['+this.id+'].remove();">Remove</a></div>'
-                +'<div class="cart"><a class="act cart" onclick="ink.INKS['+this.id+'].cart();">Add to Cart</a></div></div>'
+                +'<div class="palette"><a class="act palette" onclick="ink.INKS['+this.id+'].palette();">Add to Palette</a></div></div>'
                 +'</div></div></div>';
+  // Create only ONE Triage as the current color so user can pick to create palette
 
     }
-    cart() {
+    palette() {
         if (!this.name) {
             this.name = '#' + this.color.hexString;
         }
@@ -87,6 +83,19 @@ class ink {
                 + '<div class="paintname">'
                 + '<input class="num" type="number" value="'+this.count+'" onchange="ink.INKS['+this.id+'].changeCount(this.value);" />'
                 +'<div class="paintname container">'+((this.color.hexString != this.name)?this.name+' / ':'')+this.color.hexString+' / '+this.type+'</div>'
+                +'<div class="remove"><a class="act remove" onclick="ink.INKS['+this.id+'].remove();">Remove</a></div>'
+                +'<div class="cart"><a class="act remove" onclick="ink.INKS['+this.id+'].cart();">Add to Cart</a></div>'
+                +'<div class="paintname">'
+                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" ' +
+            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
+                +'<input id="glossy-'+this.id+'" type="radio" name="texture" ' +
+            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy" /> Glossy'
+                +'<input id="pearl-'+this.id+'" type="radio" name="texture" ' +
+            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl" /> Pearl'
+                +'</div>'
+                +'<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" ' +
+            'onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
+
                 +'</div>';
     }
 
