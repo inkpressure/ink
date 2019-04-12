@@ -86,15 +86,16 @@ class ink {
                 +'<div class="remove"><a class="act remove" onclick="ink.INKS['+this.id+'].remove();">Remove</a></div>'
                 +'<div class="cart"><a class="act remove" onclick="ink.INKS['+this.id+'].cart();">Add to Cart</a></div>'
                 +'<div class="paintname">'
-                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
-                +'<input id="glossy-'+this.id+'" type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy" /> Glossy'
-                +'<input id="pearl-'+this.id+'" type="radio" name="texture" ' +
-            'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl" /> Pearl'
+                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" '
+                + 'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
+
+                +'<input id="glossy-'+this.id+'" type="radio" name="texture" '
+                +'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Glossy" /> Glossy'
+                +'<input id="pearl-'+this.id+'" type="radio" name="texture" '
+                +'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Pearl" /> Pearl'
                 +'</div>'
-                +'<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" ' +
-            'onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
+                +'<div class="paintname"><input class="signup" id="label-'+this.id+'" placeholder="Name your paint!" '
+                +'onchange="ink.INKS['+this.id+'].name = this.value"/></div>'
 
                 +'</div>';
     }
