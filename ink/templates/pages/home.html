@@ -25,9 +25,10 @@
     #swatch {
       height: 50px;
       width: 50px;
-      background-color: ;
       border: 2px solid #000234;
       border-radius: 5px;
+      background-color: var(--selected-color);
+
     }
 
     .mainwidget {
@@ -43,7 +44,7 @@
     }
 
     a.remove {
-      background-color: red;
+      background-color: #fffef2;
 
     }
 
@@ -63,7 +64,7 @@
       position: relative;
       fill: var(--selected-color);
       background-repeat: no-repeat;
-      width: 500px;
+      width: 200px;
       box-shadow: 1px 1px 5px 3px #000234;
 
     }
@@ -81,7 +82,6 @@
       right: 0;
       opacity: 0.5;
       z-index: 8;
-      background-image: url('');
     }
 
   </style>
@@ -127,6 +127,9 @@
     <div class="row">
       <div class="col">
         <div class="main-widget" id="color-picker-container"></div>
+      </div>
+        <div class="col"><div id="swatch"></div>
+        </div>
         </div>
         <div class="col">
         <div class="main-widget" id="color-triage"></div>
@@ -137,21 +140,15 @@
         <div class="main-widget" id="color-cart"></div>
       </div>
     </div>
-  </div>
-
 
   <script>
     iro.use(iroDynamicCss);
     colorPicker.on("color:change", function (color) {
-      // Show the current color in different formats
-      // Using the selected color: https://iro.js.org/guide.html#Using-the-Selected-Color
       values.innerHTML = [
         "hex: " + color.hexString,
         "rgb: " + color.rgbString,
         "hsl: " + color.hslString,
       ].join("<br>");
-
-      // Get the dynamic stylesheet content and pretty-print it by replacing newlines and tabs with suitable html
       css.innerHTML = colorPicker.stylesheet.cssText.replace(/([\n\t])/g, function ($1) {
         switch ($1) {
           case "\n":
@@ -161,11 +158,10 @@
         }
       });
     });
-
     var values = document.getElementById("values");
     var css = document.getElementById("css");
     var picker = new iro.ColorPicker("#color-picker-container", {
-      width: 150,
+      width: 220,
       wheelLightness: true,
       css: {
         ':root': {
@@ -196,15 +192,13 @@
       ]
     });
     colorPicker.on("color:change", function (color) {
-      // Show the current color in different formats
-      // Using the selected color: https://iro.js.org/guide.html#Using-the-Selected-Color
+
       values.innerHTML = [
         "hex: " + color.hexString,
         "rgb: " + color.rgbString,
         "hsl: " + color.hslString,
       ].join("<br>");
 
-      // Get the dynamic stylesheet content and pretty-print it by replacing newlines and tabs with suitable html
       css.innerHTML = colorPicker.stylesheet.cssText.replace(/([\n\t])/g, function ($1) {
         switch ($1) {
           case "\n":
@@ -215,11 +209,9 @@
       });
     });
 
-
     function triage(color) {
       var inky = new ink(color);
     }
-
     picker.on("input:end", triage);
 
   </script>
