@@ -60,7 +60,7 @@ class ink {
         this.teardown();
         var triage = document.getElementById('color-triage');
         triage.innerHTML +=
-                '<div class="painttriage container" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
+                '<div class="painttriage container-fluid" id="ink-0-'+this.id+'" style="background-color:'+this.color.hexString+'">'
                 +'<div id="inktype-'+this.id+'" class="triagetype"></div>'
                 +'<div class="highz">'
 
@@ -86,7 +86,7 @@ class ink {
                 +'<div class="remove"><a class="act remove" onclick="ink.INKS['+this.id+'].remove();">Remove</a></div>'
                 +'<div class="cart"><a class="act remove" onclick="ink.INKS['+this.id+'].cart();">Add to Cart</a></div>'
                 +'<div class="paintname">'
-                +'<input id="matte-'+this.id+'" selected type="radio" name="texture" '
+                +'<input id="matte-'+this.id+'"  type="radio" name="texture" selected '
                 + 'onchange="ink.INKS['+this.id+'].setType(this.value);" value="Single" /> Single'
 
                 +'<input id="glossy-'+this.id+'" type="radio" name="texture" '
