@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 {% load staticfiles %}
 
 <title>{% block title %}inkpressure.com{% endblock title %}</title>
@@ -64,7 +64,8 @@
     }
 
     .painttriage {
-      border-radius: 20px;
+      margin: 2px;
+      border-radius: 10px;
       position: relative;
       fill: var(--selected-color);
       background-repeat: no-repeat;
@@ -87,13 +88,48 @@
       opacity: 0.5;
       z-index: 8;
     }
+.rainbow{
+  -webkit-animation: color-change 5s infinite;
+    -moz-animation: color-change 5s infinite;
+    -o-animation: color-change 5s infinite;
+    animation: color-change 5s infinite;}
+@-webkit-keyframes color-change {
+    0% { color: #c0b431; }
+    25% { color: #5cb12d; }
+    50% { color: #64c3d2; }
+    75% { color: #e05d6f; }
+    100% { color: #c0b431; }
 
+}
+@-moz-keyframes color-change {
+    0% { color: #000000; }
+    25% { color: #5cb12d; }
+    50% { color: #64c3d2; }
+    75% { color: #e05d6f; }
+    100% { color: #c0b431; }
+}
+
+}
+@-o-keyframes color-change {
+   0% { color: #000000; }
+    25% { color: #5cb12d; }
+    50% { color: #64c3d2; }
+    75% { color: #e05d6f; }
+    100% { color: #c0b431; }
+}
+@keyframes color-change {
+    0% { color: #000000; }
+    25% { color: #5cb12d; }
+    50% { color: #64c3d2; }
+    75% { color: #e05d6f; }
+    100% { color: #c0b431; }
+}
   </style>
 
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2>Custom Spray Paint</h2>
+      <h2 class="rainbow">Create Your Custom Spray Paint</h2>
     </div>
   </div>
 </div>
@@ -126,7 +162,12 @@
     });
   </script>
 
-<svg
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <h4>Pick a Colors Below</h4>
+
+      <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -134,7 +175,7 @@
    xmlns="http://www.w3.org/2000/svg"
    id="SVGRoot"
    version="1.1"
-   viewBox="0 0 500 250"
+   viewBox="0 0 700 250"
    height="300px"
    width="300px">
   <defs
@@ -147,19 +188,20 @@
        style="fill: var(--selected-color);;stroke-width:0.34237152" />
   </g>
 </svg>
-
-<div class="row">
-    <div class="col-md-6">
-        <div id="color-picker-container" style="padding-left: 50%"></div>
+      <p>Your Current Color Swatch</p>
+      <div id="color-picker-container"></div>
+    </div>
+    <div class="col-sm">
+      <p>Add Colors to Create Your Palette</p>
+      <div class="main-widget" id="color-triage"></div>
+    </div>
+    <div class="col-sm">
+      <div class="main-widget" id="color-cart"></div>
+    </div>
+  </div>
 </div>
-</div>
-
-<div class="main-widget" id="color-triage"></div>
 
 
-
-
-<div class="main-widget" id="color-cart"></div>
 
 
   <script>
