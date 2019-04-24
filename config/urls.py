@@ -24,7 +24,7 @@ urlpatterns = [
     #
     # Your stuff: custom urls includes go here
     #
-    path("inky/", include("squeeze.urls")),
+    path("squeeze/", include("squeeze.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
