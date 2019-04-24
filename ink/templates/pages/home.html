@@ -1,10 +1,10 @@
-{% extends "base1.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 <title>{% block title %}inkpressure.com{% endblock title %}</title>
 
 
-{% block content %}
+{% block layout %}
 
   {% block extra_js %}
     <script src="{% static 'js/iro.js' %}"></script>
@@ -200,8 +200,6 @@
 </div>
 
 
-
-
   <script>
     iro.use(iroDynamicCss);
     colorPicker.on("color:change", function (color) {
@@ -277,7 +275,20 @@
 
   </script>
 
-{% endblock content %}
+
+  <div class="container">
+  <h2 id="header">Color Palette Creator</h2>
+
+  <div class="pallete">
+    <div id="swatch-1" class="swatch colorpicker"></div>
+    <div id="swatch-2" class="swatch colorpicker"></div>
+    <div id="swatch-3" class="swatch colorpicker"></div>
+    <div id="swatch-4" class="swatch colorpicker"></div>
+    <div id="swatch-5" class="swatch colorpicker"></div>
+  </div>
+</div>
+
+{% endblock layout %}
 
 
 
