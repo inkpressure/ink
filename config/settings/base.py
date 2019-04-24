@@ -45,7 +45,6 @@ USE_TZ = True
 
 DATABASES = {
 }
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
 # ------------------------------------------------------------------------------
