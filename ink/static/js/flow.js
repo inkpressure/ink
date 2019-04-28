@@ -88,31 +88,25 @@ class ink {
     this.phase = 1;
     this.teardown();
     var triage = document.getElementById("color-cart");
-    triage.innerHTML +=
-      '<div class="paintcart container" id="ink-0-' +
-      this.id +
-      '" style="background-color:' +
-      this.color.hexString +
-      '">' +
-      '<div class="paintname">' +
-      '<input class="num" type="number" value="' +
-      this.count +
-      '" onchange="ink.INKS[' +
-      this.id +
-      '].changeCount(this.value);" />' +
-      '<div class="paintname container">' +
-      (this.color.hexString != this.name ? this.name + " / " : "") +
-      this.color.hexString +
-      " / " +
-      this.type +
-      "</div>" +
-      '<div class="remove"><a class="act remove" onclick="ink.INKS[' +
-      this.id +
+    triage.innerHTML +=`
+      <div class="paintcart container" id="ink-0-${this.id}"
+        style="background-color:${this.color.hexString}">
+        <div class="paintname col">
+          <input class="num" type="number" value="${this.count}"
+             onchange="ink.INKS[${this.id}].changeCount(${this.value});" />' +
+        <div class="paintname col">
+      ${(this.color.hexString != this.name ? this.name + " / " : "") +
+        this.color.hexString +
+        " / " +
+        this.type}
+      </div>
+      <div class="remove col">
+        <a class="act remove" onclick="ink.INKS[${this.id+
       '].remove();">Remove</a></div>' +
-      '<div class="cart"><a class="act remove" onclick="ink.INKS[' +
+      '<div class="cart col"><a class="act remove" onclick="ink.INKS[' +
       this.id +
       '].cart();">Add to Cart</a></div>' +
-      '<div class="paintname">' +
+      '<div class="col paintname">' +
       '<input id="matte-' +
       this.id +
       '"  type="radio" name="texture" selected ' +
@@ -121,6 +115,7 @@ class ink {
       '].setType(this.value);" value="Single" /> Single' +
       '<input id="glossy-' +
       this.id +
+
       '" type="radio" name="texture" ' +
       'onchange="ink.INKS[' +
       this.id +
@@ -132,12 +127,12 @@ class ink {
       this.id +
       '].setType(this.value);" value="Pearl" /> Pearl' +
       "</div>" +
-      '<div class="paintname"><input class="signup" id="label-' +
+      '<div class="paintname col"><input class="signup" id="label-' +
       this.id +
       '" placeholder="Name your paint!" ' +
       'onchange="ink.INKS[' +
       this.id +
       '].name = this.value"/></div>' +
-      "</div>";
+      "</div>`;
   }
 }
