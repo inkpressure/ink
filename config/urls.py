@@ -7,12 +7,12 @@ from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
 urlpatterns = [
-    path("", application.urls),
+#    path("", include((application.urls, 'oscar'),)),
     path("i18n/", include("django.conf.urls.i18n")),
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+    path("", TemplateView.as_view(template_name="squeeze/pages/home.html"), name="home"),
     path(
         "shopping/",
-        TemplateView.as_view(template_name="pages/shopping.html"),
+        TemplateView.as_view(template_name="squeeze/pages/shopping.html"),
         name="shopping",
     ),
     # Django Admin, use {% url 'admin:index' %}
