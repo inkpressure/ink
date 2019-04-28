@@ -23,9 +23,11 @@
 {% block layout %}{% endblock %}
 
 
-{# Local scripts #}
 {% block scripts %}
+<script type="text/javascript" src={% static 'js/squeeze.js' %}></script>
 {% endblock %}
 
-{# Additional JS scripts #}
+
 {% block extrascripts %}{% endblock %}
+
+{% block onbodyload %}{% endblock %}
