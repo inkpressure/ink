@@ -5,7 +5,9 @@
 {% endblock %}
 
 {# Block where global CSS will go. #}
-{% block styles %}{% endblock %}
+{% block styles %}
+<link href={% static "css/squeeze.css" %} rel="stylesheet" />
+{% endblock %}
 
 {# Additional CSS - specific to certain pages #}
 {% block extrastyles %}{% endblock %}
@@ -21,9 +23,11 @@
 {% block layout %}{% endblock %}
 
 
-{# Local scripts #}
 {% block scripts %}
+<script type="text/javascript" src={% static 'js/squeeze.js' %}></script>
 {% endblock %}
 
-{# Additional JS scripts #}
+
 {% block extrascripts %}{% endblock %}
+
+{% block onbodyload %}{% endblock %}
