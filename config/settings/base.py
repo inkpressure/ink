@@ -165,8 +165,12 @@ MEDIA_ROOT = str(APPS_DIR("media"))
 MEDIA_URL = "/media/"
 
 # TEMPLATES
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#templates
+import os
+location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
 TEMPLATES = [
     {
         # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
