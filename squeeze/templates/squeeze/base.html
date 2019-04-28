@@ -5,7 +5,9 @@
 {% endblock %}
 
 {# Block where global CSS will go. #}
-{% block styles %}{% endblock %}
+{% block styles %}
+<link href={% static "css/squeeze.css" %} rel="stylesheet" />
+{% endblock %}
 
 {# Additional CSS - specific to certain pages #}
 {% block extrastyles %}{% endblock %}
