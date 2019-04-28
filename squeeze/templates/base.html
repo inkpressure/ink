@@ -1,0 +1,175 @@
+{% load static i18n %}<!DOCTYPE html>
+{% load socialaccount %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Comfortaa|Coming+Soon|Permanent+Marker">
+    <iframe id="audio" src="{% static 'media/spray_sound.mp3' %}" allow="autoplay"  style="display:none"></iframe>
+    <source src="{% static 'media/spray_audio.mp3' %}" type="audio/mpeg">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    {% block css %}
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+        <link href="{% static 'css/ink_bootstrap.css' %}" rel="stylesheet">
+    {% endblock css %}
+        <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+</head>
+
+<body>
+<div id="fb-root"></div>
+
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=275166813408739&autoLogAppEvents=1"></script>
+<style>
+  .navbar{
+    background-image: url("{% static '' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+}
+</style>
+<div class="mb-1">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler">
+            <img style="height:50px" src="{% static 'images/fingerprint_flat.svg' %}" alt=""></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <img style="width: 200px;" src="{% static 'images/inkpressure_logo.svg' %}" alt="logo"></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+              {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                </li>
+                <li class="nav-item">
+                  {# URL provided by django-allauth/account/urls.py #}
+                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                </li>
+                <p><a href="{% provider_login_url 'google' %}">Log In with Gmail</a></p>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'shopping' %}">Shopping Cart</a>
+              </li>
+              {% endif %}
+          </ul>
+        </div>
+    </nav>
+</div>
+{% if user.is_authenticated %}
+<h6 style="float: right; color: #00c300;">Welcome Back {{ user.username }} !!!</h6>
+{% endif %}
+    <div class="container">
+
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+<style>
+body{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-family: "Permanent Marker", sans-serif;
+  background-image: url('{% static 'images/background_can.svg' %}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: shake;
+  animation-duration: .6s;
+  color: #000234;
+}
+@font-face{
+  font-family: 'Whoa!';
+  src: url({% static 'fonts/whoa!.ttf' %}) format("truetype"),
+       local('Whoa!');
+}
+</style>
+
+      {% block content %}
+
+      {% endblock content %}
+ <style>
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+}
+</style>
+<footer class="footer">
+      <div class="container-fluid">
+        <p style="color: white;">Contact us on Social Media!</p>
+        <span class="text-muted">
+          <a href="https://www.facebook.com/Inkpressurecom-1982157881897017/?modal=admin_todo_tour">
+            <img style="width: 35px; margin: 14px"
+                 src="{% static 'images/socials/facebook_icon.png' %}" alt="fb logo"></a>
+          <a href="https://www.instagram.com/inkpressure/">
+           <img style="width: 35px; margin: 14px"
+               src="{% static 'images/socials/instagram_icon.png' %}" alt="insta logo"></a>
+          <a href="https://twitter.com/Inkpressure2">
+            <img style="width: 35px; margin: 14px"
+               src="{% static 'images/socials/twitter_icon.png' %}" alt="twitter logo"></a>
+          <a href="https://www.youtube.com/channel/UCBN3SCNve1eBN47lU88Cd1Q?disable_polymer=true"><img style="width: 35px; margin: 18px"
+                          src="{% static 'images/socials/youtube_icon.png' %}" alt="youtube logo"></a>
+        </span>
+      </div>
+  <div class="fb-like" data-href="https://www.inkpressure.com" data-width="60" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+    </footer>
+
+    {% block modal %}
+
+
+    {% endblock modal %}
+
+    {% block javascript %}
+      
+      <!-- Bootstrap JS and its dependencies-->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <!-- Your stuff: Third-party javascript libraries go here -->
+   <script src="https://cdn.jsdelivr.net/npm/iro-dynamic-css/dist/iro-dynamic-css.min.js"></script>
+
+      <!-- place project specific Javascript in this file -->
+
+      <script src="{% static 'js/project.js' %}"></script>
+      
+
+    {% endblock javascript %}
+  </body>
+</html>
+ 
