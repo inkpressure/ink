@@ -99,27 +99,7 @@
     <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
     {% endfor %}
     {% endif %}
-    <style>
-      body {
-        text-align: center;
-        width: 100%;
-        height: 100%;
-        font-family: "Permanent Marker", sans-serif;
-        background-image: url('{% static 'images/background_can.svg' %}');
-        background-size: cover;
-        background-repeat: no-repeat;
-        animation: shake;
-        animation-duration: .6s;
-        color: #000234;
-      }
 
-      @font-face {
-        font-family: 'Whoa!';
-        src: url({% static 'fonts/whoa!.ttf' %}) format("truetype"),
-        local('Whoa!');
-      }
-
-    </style>
 
     {% block content %}
 

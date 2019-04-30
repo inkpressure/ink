@@ -1,12 +1,24 @@
 {%extends 'oscar/base.html' %}
 {%load staticfiles %}
+{% load static i18n %}
+
+<head>
+<title>{% block title %}{% endblock title %}</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="author" content="">
+
+
 {% block favicon %}
-<link rel="shortcut icon" href="{% static "oscar/favicon.ico" %}" />
+<link rel="shortcut icon" href="{% static "images/favicons/favicon.ico" %}" />
 {% endblock %}
 
 {# Block where global CSS will go. #}
 {% block styles %}
 <link href={% static "css/squeeze.css" %} rel="stylesheet" />
+  <link href={% static "css/ink_bootstrap.css" %} rel="stylesheet" />
+
 {% endblock %}
 
 {# Additional CSS - specific to certain pages #}
@@ -18,9 +30,16 @@
 {# Default to using Google analytics #}
 {% include "partials/google_analytics.html" %}
 {% endblock %}
+</head>
+
 {% block body_id %}default{% endblock %}" class="{% block body_class %}default{% endblock %}">
+
+
+
+{% block layout %}
+
+{% endblock %}
 {# Main content goes in this 'layout' block #}
-{% block layout %}{% endblock %}
 
 
 {% block scripts %}
